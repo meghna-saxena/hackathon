@@ -1,0 +1,48 @@
+.action-btn {
+    background-color: #EA7F28;
+    border: none;
+    outline: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    text-transform: capitalize;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    /* padding: 20px 20px; */
+    padding: 5px 0;
+    border-radius: 20px;
+    width: 150px;
+}
+
+.action-btn-cancel {
+    background-color: rgb(243, 236, 230);
+    border: none;
+    outline: none;
+    color: rgb(43, 41, 41);
+    text-align: center;
+    text-decoration: none;
+    text-transform: capitalize;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    /* padding: 20px 20px; */
+    padding: 5px 0;
+    border-radius: 20px;
+    width: 150px;
+}
+
+.action-btn:hover {
+    background-color: #D37324;
+}
+
+.action-btn:hover {
+    background-color: #D37324;
+}
+
+.action-btn-cancel:hover {
+    background-color: rgb(228, 224, 222);
+    color: rgb(43, 41, 41);
+}

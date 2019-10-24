@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import "./App.css";
+import Main from "./components/Main";
+import HolidayRequestForm from "./components/HolidayRequestForm";
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <iframe
+        src="https://inside.auto1-group.com"
+        style={{ height: "1080px", width: "100%" }}
+      ></iframe>
+      <a
+        href="/request"
+        style={{
+          zIndex: 1111,
+          background: "none",
+          bottom: 400,
+          position: "absolute",
+          top: "300px",
+          width: "200px",
+          height: "50px",
+          color: "orange",
+          right: "180px",
+          marginTop: "12px"
+        }}
+      >
+        Request holiday
+      </a> */}
+      <Switch>
+        <Route path="/" exact component={Main} />
+        <Route path="/request-holiday" exact component={HolidayRequestForm} />
+        {/* <Route path="/cars/:id" exact component={CarDetailsPage} />
+        <Route component={NotFound} /> */}
+      </Switch>
     </div>
   );
-}
+};
 
 export default App;
