@@ -1,7 +1,7 @@
 import * as React from "react";
 import DatePicker from "../DatePicker/DatePicker";
 import { Button, Menu, Dropdown, notification } from "antd";
-import { Input, Tooltip, Icon } from "antd";
+// import { Input, Tooltip, Icon } from "antd";
 import "./FormContent.css";
 
 import axios from "axios";
@@ -52,7 +52,6 @@ class FormContent extends React.Component<any, any> {
         options
       )
       .then(res => {
-        console.log("res", res);
         this.setState({ reqStatus: res.status, dateFrom: null, dateTo: null });
       });
   };
@@ -64,31 +63,41 @@ class FormContent extends React.Component<any, any> {
 
     return (
       <div className="content">
-        <h1>Holiday Request</h1>
-        <br />
-        <p style={{ fontSize: "16px", textAlign: "left" }}>
-          <span style={{ background: "beige" }}>Meghna Srivastava</span> please
-          fill the holiday request form at the latest 4 weeks before the start
-          of your holidays. We cannot accept holiday requests which we receive
-          after this period
-        </p>
-        <br />
-        <br />
-        <br />
-        <DatePicker handleValue={this.handleDateOfVacation} />
-        <br />
-        <br />
-
-        <br />
-        <Button
-          className="action-btn"
-          style={{ marginRight: "25px", marginTop: "100px" }}
-          type="primary"
-          onClick={this.handleSubmitForm}
+        <div
+          style={{
+            width: "50%",
+            margin: "auto"
+          }}
         >
-          Submit
-        </Button>
-        <Button className="action-btn-cancel">Cancel</Button>
+          <h1>Vacation Request</h1>
+          <img
+            src="https://icons-for-free.com/iconfiles/png/512/relax+resolutions+rest+sleep+umbrella+vacation+icon-1320084099174923753.png"
+            width="100px"
+          />
+          <br />
+          <p style={{ fontSize: "16px", textAlign: "justify" }}>
+            <span style={{ background: "beige" }}>Meghna Srivastava</span>{" "}
+            please fill the holiday request form at the latest 4 weeks before
+            the start of your holidays. We cannot accept holiday requests which
+            we receive after this period.
+          </p>
+          <br />
+          <br />
+          <br />
+          <DatePicker style={{width: '500px !important'}} handleValue={this.handleDateOfVacation} />
+          {/* {/* <br /> */}
+          <br />
+
+          <Button
+            className="action-btn"
+            style={{ marginRight: "25px", marginTop: "100px" }}
+            type="primary"
+            onClick={this.handleSubmitForm}
+          >
+            Submit
+          </Button>
+          <Button className="action-btn-cancel">Cancel</Button>
+        </div>
       </div>
     );
   }

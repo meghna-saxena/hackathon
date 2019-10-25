@@ -1,15 +1,15 @@
 .footer {
     border-top: 1px solid #EDEDED;
     /* height: 60px; */
-    padding-bottom: 20px;
+    padding-bottom: 15px;
     color: #fff;
     font-family: 'Roboto', sans-serif;
-    font-size: 12px;
+    font-size: 14px;
     clear: both;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
-    background: #262523;
+    background: #2f2f2f;
 }
 
 .footer-text {
