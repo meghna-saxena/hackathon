@@ -17,7 +17,7 @@ class Donut extends Component {
 
     return (
       <div className="donut">
-        <Chart options={this.state.options} series={this.state.vacations} type="donut" width="380" />
+        <Chart options={this.state.options} series={this.state.vacations} labels={this.state.labels} type="donut" width="380" />
       </div>
     );
   }
