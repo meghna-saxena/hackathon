@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Menu, Icon } from "antd";
+import { Menu, Icon, Badge } from "antd";
+
 import List from "../List/List";
 import { Redirect } from "react-router-dom";
 import { withRouter } from "react-router-dom";
@@ -7,28 +8,23 @@ import { withRouter } from "react-router-dom";
 const { SubMenu } = Menu;
 
 class Sider extends React.Component<any, any> {
-  state = {
-    list: false
-  };
-
   handleClick = e => {
     console.log("click ", e);
   };
 
   renderList = () => {
-    // this.setState({ list: true });
-    //<Redirect to="/holiday-balance" />;
-    this.props.history.push("/holiday-balance");
+    this.props.history.push("/pending-request");
+  };
+
+  renderRequestPage = () => {
+    this.props.history.push("/request-holiday");
+  };
+
+  renderHolidayTrackerPage = () => {
+    this.props.history.push("/holiday-tracker");
   };
 
   render() {
-    // let testList: any = null;
-
-    // if (this.state.list) {
-    //   // testList = <List />;
-    //   <Redirect to='/holiday-balance' />
-    // }
-
     return (
       <Menu
         onClick={this.handleClick}
@@ -47,10 +43,18 @@ class Sider extends React.Component<any, any> {
           }
         >
           <Menu.ItemGroup key="g1">
-            <Menu.Item key="1">Holiday Request</Menu.Item>
-            <Menu.Item key="2" onClick={this.renderList}>
-              Holiday Balance
+            <Menu.Item key="1" onClick={this.renderRequestPage}>
+              Holiday Request
             </Menu.Item>
+            <Menu.Item key="2" onClick={this.renderHolidayTrackerPage}>
+              Holiday Tracker
+            </Menu.Item>
+
+            <Menu.Item key="3" onClick={this.renderList}>
+              Pending Requests
+              <Badge style={{ marginLeft: "10px" }} count={3}></Badge>
+            </Menu.Item>
+            {/* </Badge> */}
           </Menu.ItemGroup>
           {/* <Menu.ItemGroup key="g2" title="Item 2">
             <Menu.Item key="3">Option 3</Menu.Item>

@@ -3,7 +3,8 @@ import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import Main from "./components/Main";
 import HolidayRequestForm from "./components/HolidayRequestForm";
-import List from "./components/common/List/List";
+import PendingRequestPage from "./components/PendingRequestPage";
+import HolidayTrackerPage from "./components/HolidayTrackerPage";
 
 const App: React.FC = () => {
   return (
@@ -11,7 +12,9 @@ const App: React.FC = () => {
       <Switch>
         <Route path="/" exact component={Main} />
         <Route path="/request-holiday" exact component={HolidayRequestForm} />
-        <Route path="/holiday-balance" exact component={List} />
+        <Route path="/pending-request" exact component={PendingRequestPage} />
+        <Route path="/holiday-tracker" exact component={HolidayTrackerPage} />
+
         {/* <Route component={NotFound} /> */}
       </Switch>
     </div>
