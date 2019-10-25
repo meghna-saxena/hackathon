@@ -1,4 +1,4 @@
-import { List, Avatar, Skeleton, Badge } from "antd";
+import { List, Avatar, Skeleton, Badge, Spin } from "antd";
 import * as React from "react";
 import axios from "axios";
 import "./StatusList.css";
@@ -19,11 +19,13 @@ const statusEnum = {
 };
 
 const MEGGIE_TOKEN =
-"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmVzQXQiOjE1NzIwMjUyNTYsImFjY2Vzc190b2tlbiI6InlhMjkuSWwtcEI4MHNkS2EyeFlPMi1ZekJ1UXNjclIyNE5yY0xyV1NOWEI1OVFpMDM4QjFpTnJ5TlZjNEZrZTRUajZfc25XSENhTXJtay1sb3FJRGpMazQ3N1ZPb0lobmVHTW4tT05YMi1WRmNveDBxT2hPZ05ORi1wd3hnZERnT2hXODg1QSIsInJlZnJlc2hfdG9rZW4iOiIxLy8wOXY0MThEdWw4WUtyQ2dZSUFSQUFHQWtTTndGLUw5SXJ3WmgyUXU4WFBDT2U3X0ZrRWVaQWRBbl9yaHNoc1hEV3p5eTB4M2x1SzdxWXRfNVZrTkgxR2JScEVkWWx3QVVfcFhBIiwidXNlcm5hbWUiOiJtZWdobmEuc3JpdmFzdGF2YUBhdXRvMS5jb20iLCJyb2xlcyI6W119.1S1NcFzIOggGY4QKGFNj4sAuGaJ97qeNV8_MaYyWHt4";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmVzQXQiOjE1NzIwMzg3MzQsImFjY2Vzc190b2tlbiI6InlhMjkuSWwtcEJ5ZjRTeXJ4Z2pWQ2xuSF96ZVJhYlIwaWQ3Z2g5WmIyaG42cFNXNXkyWUt5dVNpSzR4TGVHNi1jeWZ0a1hyLTI1MVYxSWZZYlJ6cUh0LXZKNlBJNEVWY19FaS1uUXdrSkFqNVp5TG1nYkpjcHBhYTFQV1dnZEpObENGN2owUSIsInJlZnJlc2hfdG9rZW4iOiIxLy8wY0YxbG9KV3dwVTE4Q2dZSUFSQUFHQXdTTndGLUw5SXJpOElZYnRTRHJLcm10TkxhVjRldndyeEpLT051STJmN0NiMmpobzAtbVhQU05LWENqREEzUUlNZl9VTDM4RERCQWg4IiwidXNlcm5hbWUiOiJtZWdobmEuc3JpdmFzdGF2YUBhdXRvMS5jb20iLCJyb2xlcyI6W119.dhh_XCABNP058PQ6sRo7MMM9t5n9vSl7WrW3Tz4L21o";
 
 export default class NewList extends React.Component<any, any> {
   state = {
-    realData: []
+    realData: [],
+    isLoading: true,
+    error: null
   };
 
   async componentDidMount() {
@@ -45,7 +47,10 @@ export default class NewList extends React.Component<any, any> {
         options
       )
       .then(res => {
-        this.setState({ realData: res.data });
+        this.setState({ realData: res.data, isLoading: false });
+      })
+      .catch(err => {
+        this.setState({ error: err, isLoading: false });
       });
   }
 
@@ -64,6 +69,10 @@ export default class NewList extends React.Component<any, any> {
   };
 
   render() {
+    if (this.state.isLoading && !this.state.error) {
+      return <Spin />;
+    }
+
     return (
       <div
         style={{
@@ -82,7 +91,8 @@ export default class NewList extends React.Component<any, any> {
                 actions={[
                   <span
                     style={{
-                      background: "green" || this.getColor(statusEnum[item.status]),
+                      background:
+                        "green" || this.getColor(statusEnum[item.status]),
                       color: "#edd38a",
                       padding: "5px 15px",
                       borderRadius: "20px"
