@@ -1,19 +1,12 @@
-import { List, Avatar, Skeleton } from "antd";
+import { List, Avatar, Skeleton, Badge } from "antd";
 import * as React from "react";
+import "./StatusList.css";
 
 const data = [
   {
     title: "Meghna Srivastava"
   },
-  {
-    title: "John Doe"
-  },
-  {
-    title: "Hellie Mann"
-  }
-  //   {
-  //     title: "Ant Design Title 4"
-  //   }
+  
 ];
 
 export default class NewList extends React.Component {
@@ -26,6 +19,7 @@ export default class NewList extends React.Component {
           marginRight: "40px"
         }}
       >
+        <h3 className="statusHeading">Status of your vacation requests</h3>
         <List
           itemLayout="horizontal"
           dataSource={data}
@@ -44,19 +38,32 @@ export default class NewList extends React.Component {
           renderItem={item => (
             <List.Item
               actions={[
-                <a key="list-loadmore-edit">Approve</a>,
-                <a key="list-loadmore-more">Reject</a>
+                <span
+                  style={{
+                    background: "green",
+                    color: "#fff",
+                    padding: "5px",
+                    borderRadius: "20px"
+                  }}
+                >
+                  Approved
+                </span>,
+                <a key="list-loadmore-delete">Delete</a>
               ]}
             >
               {/* <Skeleton avatar title={false} active> */}
               <List.Item.Meta
+                style={{
+                  textAlign: "left",
+                  paddingLeft: "60px"
+                }}
                 avatar={
                   <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
                 }
                 title={item.title}
                 description="Leave taken from 25/10/2019 to 30/10/2019"
               />
-              <div>content</div>
+              {/* <div>content</div> */}
               {/* </Skeleton> */}
             </List.Item>
           )}

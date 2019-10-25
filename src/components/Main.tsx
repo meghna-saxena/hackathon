@@ -1,8 +1,10 @@
 import * as React from "react";
+import img from "../images/meggieHome.png";
+import { withRouter } from "react-router-dom";
 
 export interface IAppProps {}
 
-export default class Main extends React.Component<IAppProps, {}> {
+class Main extends React.Component<any, {}> {
   state = {
     loading: true
   };
@@ -10,6 +12,13 @@ export default class Main extends React.Component<IAppProps, {}> {
   componentDidMount() {
     this.setState({ loading: false });
   }
+
+  renderImg = () => {
+    // href = "/request-holiday";
+    // target = "_blank";
+
+    this.props.history.push("/request-holiday");
+  };
   render() {
     let myLink: any = "";
     if (!this.state.loading) {
@@ -36,10 +45,11 @@ export default class Main extends React.Component<IAppProps, {}> {
     }
     return (
       <div>
-        <iframe
-          src="https://inside.auto1-group.com"
-          style={{ height: "1080px", width: "100%" }}
-        ></iframe>
+        <img
+          src={img}
+          onClick={this.renderImg}
+          style={{ cursor: 'pointer', width: "100%" }}
+        ></img>
         {/* <a
           href="/request-holiday"
           style={{
@@ -57,8 +67,10 @@ export default class Main extends React.Component<IAppProps, {}> {
         >
           Request holiday
         </a> */}
-        {myLink}
+        {/* {myLink} */}
       </div>
     );
   }
 }
+
+export default withRouter(Main);

@@ -51,7 +51,7 @@ class Sider extends React.Component<any, any> {
             </Menu.Item>
 
             <Menu.Item key="3" onClick={this.renderList}>
-              Pending Requests
+              My Employees
               <Badge style={{ marginLeft: "10px" }} count={3}></Badge>
             </Menu.Item>
             {/* </Badge> */}

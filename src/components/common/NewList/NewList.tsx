@@ -1,5 +1,6 @@
 import { List, Avatar, Skeleton } from "antd";
 import * as React from "react";
+import "./NewList.css";
 
 const data = [
   {
@@ -11,12 +12,13 @@ const data = [
   {
     title: "Hellie Mann"
   }
-  //   {
-  //     title: "Ant Design Title 4"
-  //   }
 ];
 
 export default class NewList extends React.Component {
+  handleApproveRequest = (item: any) => {
+    console.log("handleApproveRequest", item);
+  };
+
   render() {
     return (
       <div
@@ -26,38 +28,33 @@ export default class NewList extends React.Component {
           marginRight: "40px"
         }}
       >
+        <h3 className="pendingRequestHeading">Pending requests</h3>
         <List
           itemLayout="horizontal"
           dataSource={data}
-          //   renderItem={item => (
-          //     <List.Item>
-          //       <List.Item.Meta
-          //         avatar={
-          //           <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-          //         }
-          //         title={item.title}
-          //         description="Leave taken from 25/10/2019 to 30/10/2019"
-          //       />
-          //     </List.Item>
-          //   )}
-
           renderItem={item => (
             <List.Item
               actions={[
-                <a key="list-loadmore-edit">Approve</a>,
+                <a
+                  key="list-loadmore-edit"
+                  onClick={item => this.handleApproveRequest(item)}
+                >
+                  Approve
+                </a>,
                 <a key="list-loadmore-more">Reject</a>
               ]}
             >
-              {/* <Skeleton avatar title={false} active> */}
               <List.Item.Meta
+                style={{
+                  textAlign: "left",
+                  paddingLeft: "60px"
+                }}
                 avatar={
                   <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
                 }
                 title={item.title}
                 description="Leave taken from 25/10/2019 to 30/10/2019"
               />
-              <div>content</div>
-              {/* </Skeleton> */}
             </List.Item>
           )}
         />
