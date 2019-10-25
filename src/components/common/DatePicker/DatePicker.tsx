@@ -5,9 +5,17 @@ import moment from "moment";
 const { RangePicker } = DatePicker;
 const dateFormat = "DD/MM/YYYY";
 
-const DatePickerComponent: React.FC = () => {
-  function onChange(date, dateString) {
+interface IProps {
+  handleValue: (string) => void;
+  onChange: () => void;
+}
+
+const DatePickerComponent = (props: any) => {
+  function onChange(date: any, dateString: [string, string]) {
     console.log(date, dateString);
+
+    console.log("date", dateString);
+    props.handleValue(dateString);
   }
 
   return <RangePicker onChange={onChange} format={dateFormat} />;
