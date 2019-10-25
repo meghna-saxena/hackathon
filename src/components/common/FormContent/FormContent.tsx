@@ -1,44 +1,67 @@
 import * as React from "react";
 import DatePicker from "../DatePicker/DatePicker";
-// import { Layout } from "antd";
-import { Button, Menu, Dropdown } from "antd";
-// const { Header, Footer, Sider, Content } = Layout;
-// import { Input } from "antd";
+import { Button, Menu, Dropdown, notification } from "antd";
 import { Input, Tooltip, Icon } from "antd";
 import "./FormContent.css";
 
 import axios from "axios";
 
-const { TextArea } = Input;
-
 const MEGGIE_TOKEN =
-  "eyJleHBpcmVzQXQiOjE1NzE5ODA1NzUsImFjY2Vzc190b2tlbiI6InlhMjkuSWwtcEI2Y3hxbnRmaXE2THBOSGJxNlpqZjZVRHJleGlES3FyajJXQWJqaEFEaW82MGZzb2FEV3lfT2FJWnM3bTYxODN2SVFVUTFCZlVYb1VnaUNZX19wcVZkSGw1UUNEa01JdEFjTWtIZzEyQW5hTDhzR3hGbUtwZ2RETXR4UUVMdyIsInJlZnJlc2hfdG9rZW4iOiIxLy8wOTZOeDVCSzVZbjVoQ2dZSUFSQUFHQWtTTndGLUw5SXJMWDQ2YW5XaW9ua3llaTR4d3BsandyQ21CWGwyLVBFYXJ1OEtIUTYzQ01aX05LNmdsZXFpS1hDZXNuYmExcDdvS2NjIiwidXNlcm5hbWUiOiJtZWdobmEuc3JpdmFzdGF2YUBhdXRvMS5jb20iLCJyb2xlcyI6W119";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmVzQXQiOjE1NzIwMTc3NTEsImFjY2Vzc190b2tlbiI6InlhMjkuSWwtcEI3UkR6V0VyWG16QVZxbGpNTjlwM0dxNE0yM3pDdjAxWGItZUtRY041SnhreUd0YzBrVll5QlJBSXJMUEFWSlF2aXFwU3puemM4SEtoVkZuT1V6djBLV1A3bG1LeEI0RWlqalBtUExLT2hvY2FncmF4eENiZ1FPUW9KMFhrUSIsInJlZnJlc2hfdG9rZW4iOiIxLy8wOWN3SlptWVRETGRSQ2dZSUFSQUFHQWtTTndGLUw5SXJqQTJMQU1OTHliTE5FS01jZXNibmtkcmNLRElUdndnUks1LXZDNnVQQ0xCYldXTlFWRllYNm1VWGdFa2JCRVo2VEdvIiwidXNlcm5hbWUiOiJtZWdobmEuc3JpdmFzdGF2YUBhdXRvMS5jb20iLCJyb2xlcyI6W119.GdaQpvaEvOwIkhsydNkx9tOZRyscv7-3-aebkRGlEPs";
 
 class FormContent extends React.Component<any, any> {
   state = {
     dateFrom: null,
-    dateTo: null
+    dateTo: null,
+    reqStatus: null
+  };
+
+  openNotificationWithIcon = type => {
+    notification[type]({
+      message: "Success",
+      description: "Your vacation request has been submitted."
+    });
   };
 
   handleDateOfVacation = e => {
     this.setState({ dateFrom: e[0], dateTo: e[1] });
   };
 
-  handleSubmitForm = () => {
-    // axios
-    //   .post(
-    //     "https://api-gate.qa.eagle.auto1.team/v1/people-directory/profile/me/holiday",
-    //     profile
-    //   )
-    //   .then(res => {
-    //     return res;
-    //   });
+  handleSubmitForm = async () => {
+    const defaultHeaders = {
+      "Content-Type": "application/json",
+      "X-Intranet": true
+    };
 
-    console.log("submit clicked");
+    const data = {
+      dateFrom: this.state.dateFrom,
+      dateTo: this.state.dateTo
+    };
+
+    const options = {
+      headers: {
+        ...defaultHeaders,
+        Authorization: `Bearer ${MEGGIE_TOKEN}`
+      }
+    };
+
+    const response = await axios
+      .post(
+        "https://api-gate.qa.eagle.auto1.team/v1/people-directory/profile/me/holiday",
+        data,
+        options
+      )
+      .then(res => {
+        console.log("res", res);
+        this.setState({ reqStatus: res.status, dateFrom: null, dateTo: null });
+      });
   };
 
   render() {
-    console.log("state", this.state);
+    if (this.state.reqStatus) {
+      this.openNotificationWithIcon("success");
+    }
+
     return (
       <div className="content">
         <h1>Holiday Request</h1>

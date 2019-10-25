@@ -2,7 +2,6 @@ import * as React from "react";
 import { Menu, Icon, Badge } from "antd";
 
 import List from "../List/List";
-import { Redirect } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
 const { SubMenu } = Menu;
