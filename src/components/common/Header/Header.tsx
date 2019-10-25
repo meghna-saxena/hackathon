@@ -13,7 +13,7 @@ const Header = () => {
           alt="logo"
         />
       </Link>   
-      <span
+      {/* <span
         style={{
           color: "orange",
           marginRight: "50px",
@@ -22,7 +22,7 @@ const Header = () => {
         }}
       >
         Logout
-      </span>
+      </span> */}
     </div>
   );
 };
