@@ -4,6 +4,7 @@ import axios from "axios";
 import "./StatusList.css";
 import moment from "moment";
 import Piechart from "../../PieChart/PieChart.jsx";
+import { stat } from "fs";
 // const data = [
 //   {
 //     employeeName: "Meghna Srivastava",
@@ -19,7 +20,7 @@ const statusEnum = {
 };
 
 const MEGGIE_TOKEN =
-"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmVzQXQiOjE1NzIwNDI4MjcsImFjY2Vzc190b2tlbiI6InlhMjkuSWwtcEIzejBjSFNocDA3S2lxV1ZzNVJYZmowbUxCNnBNMEwyLWNuVDZNWlZGQl8xRTJWS2JUdDhLVk12WGtxWmtMRWhUdUkxQXJTZzJiNmVBVVhFanhPVHQ0aHhfUTVJc1hDUkJWc1k0d0JTNFlLQkRPdTNKTzVKeG5ZXzdDVXZpZyIsInJlZnJlc2hfdG9rZW4iOiIxLy8wOVRFaDlPdUpOWVoxQ2dZSUFSQUFHQWtTTndGLUw5SXI4X2xpZC00X19tZjUzOEJyZFMycWtXOWwyanFpbml5OS1IdnlSMFNhWlNyY1RkMlJUb3Jkek92VS1EZ3Y1VGVvTW9NIiwidXNlcm5hbWUiOiJtZWdobmEuc3JpdmFzdGF2YUBhdXRvMS5jb20iLCJyb2xlcyI6W119.-V4vabqpNvmxJ_IWgJmqngMPKQDNbd2lxmSMSZC8kQY";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmVzQXQiOjE1NzIwNDI4MjcsImFjY2Vzc190b2tlbiI6InlhMjkuSWwtcEIzejBjSFNocDA3S2lxV1ZzNVJYZmowbUxCNnBNMEwyLWNuVDZNWlZGQl8xRTJWS2JUdDhLVk12WGtxWmtMRWhUdUkxQXJTZzJiNmVBVVhFanhPVHQ0aHhfUTVJc1hDUkJWc1k0d0JTNFlLQkRPdTNKTzVKeG5ZXzdDVXZpZyIsInJlZnJlc2hfdG9rZW4iOiIxLy8wOVRFaDlPdUpOWVoxQ2dZSUFSQUFHQWtTTndGLUw5SXI4X2xpZC00X19tZjUzOEJyZFMycWtXOWwyanFpbml5OS1IdnlSMFNhWlNyY1RkMlJUb3Jkek92VS1EZ3Y1VGVvTW9NIiwidXNlcm5hbWUiOiJtZWdobmEuc3JpdmFzdGF2YUBhdXRvMS5jb20iLCJyb2xlcyI6W119.-V4vabqpNvmxJ_IWgJmqngMPKQDNbd2lxmSMSZC8kQY";
 
 export default class NewList extends React.Component<any, any> {
   state = {
@@ -60,9 +61,9 @@ export default class NewList extends React.Component<any, any> {
 
   getColor = status => {
     const colorBadge = {
-      pending: "#4a4948",
-      approved: "green",
-      declined: "red"
+      Pending: "#e6ae17",
+      Approved: "#acf299",
+      Declined: "#acf299"
     };
 
     return colorBadge[status];
@@ -93,9 +94,8 @@ export default class NewList extends React.Component<any, any> {
                 actions={[
                   <span
                     style={{
-                      background:
-                        "green" || this.getColor(statusEnum[item.status]),
-                      color: "#edd38a",
+                      background: this.getColor(statusEnum[item.status]),
+                      color: "#30302e",
                       padding: "5px 15px",
                       borderRadius: "20px"
                     }}
