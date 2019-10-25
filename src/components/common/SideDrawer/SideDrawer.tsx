@@ -43,10 +43,10 @@ class Sider extends React.Component<any, any> {
         >
           <Menu.ItemGroup key="g1">
             <Menu.Item key="1" onClick={this.renderRequestPage}>
-              Holiday Request
+              Vacation Request
             </Menu.Item>
             <Menu.Item key="2" onClick={this.renderHolidayTrackerPage}>
-              Holiday Tracker
+              Vacation Overview
             </Menu.Item>
 
             <Menu.Item key="3" onClick={this.renderList}>

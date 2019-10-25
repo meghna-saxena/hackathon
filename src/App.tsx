@@ -8,6 +8,7 @@ import HolidayTrackerPage from "./components/HolidayTrackerPage";
 import Header from "./components/common/Header/Header";
 import SideDrawer from "./components/common/SideDrawer/SideDrawer";
 import Footer from './components/common/Footer/Footer';
+import Toggle from './components/common/ToggleSideDrawer/ToggleSideDrawer';
 
 const App: React.FC = () => {
   return (

@@ -1,9 +1,9 @@
-import { List, Avatar, Skeleton, Badge, Spin } from "antd";
+import { List, Avatar, Skeleton, Badge, Spin, Divider } from "antd";
 import * as React from "react";
 import axios from "axios";
 import "./StatusList.css";
 import moment from "moment";
-
+import Piechart from "../../PieChart/PieChart.jsx";
 // const data = [
 //   {
 //     employeeName: "Meghna Srivastava",
@@ -19,7 +19,7 @@ const statusEnum = {
 };
 
 const MEGGIE_TOKEN =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmVzQXQiOjE1NzIwMzg3MzQsImFjY2Vzc190b2tlbiI6InlhMjkuSWwtcEJ5ZjRTeXJ4Z2pWQ2xuSF96ZVJhYlIwaWQ3Z2g5WmIyaG42cFNXNXkyWUt5dVNpSzR4TGVHNi1jeWZ0a1hyLTI1MVYxSWZZYlJ6cUh0LXZKNlBJNEVWY19FaS1uUXdrSkFqNVp5TG1nYkpjcHBhYTFQV1dnZEpObENGN2owUSIsInJlZnJlc2hfdG9rZW4iOiIxLy8wY0YxbG9KV3dwVTE4Q2dZSUFSQUFHQXdTTndGLUw5SXJpOElZYnRTRHJLcm10TkxhVjRldndyeEpLT051STJmN0NiMmpobzAtbVhQU05LWENqREEzUUlNZl9VTDM4RERCQWg4IiwidXNlcm5hbWUiOiJtZWdobmEuc3JpdmFzdGF2YUBhdXRvMS5jb20iLCJyb2xlcyI6W119.dhh_XCABNP058PQ6sRo7MMM9t5n9vSl7WrW3Tz4L21o";
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmVzQXQiOjE1NzIwNDI4MjcsImFjY2Vzc190b2tlbiI6InlhMjkuSWwtcEIzejBjSFNocDA3S2lxV1ZzNVJYZmowbUxCNnBNMEwyLWNuVDZNWlZGQl8xRTJWS2JUdDhLVk12WGtxWmtMRWhUdUkxQXJTZzJiNmVBVVhFanhPVHQ0aHhfUTVJc1hDUkJWc1k0d0JTNFlLQkRPdTNKTzVKeG5ZXzdDVXZpZyIsInJlZnJlc2hfdG9rZW4iOiIxLy8wOVRFaDlPdUpOWVoxQ2dZSUFSQUFHQWtTTndGLUw5SXI4X2xpZC00X19tZjUzOEJyZFMycWtXOWwyanFpbml5OS1IdnlSMFNhWlNyY1RkMlJUb3Jkek92VS1EZ3Y1VGVvTW9NIiwidXNlcm5hbWUiOiJtZWdobmEuc3JpdmFzdGF2YUBhdXRvMS5jb20iLCJyb2xlcyI6W119.-V4vabqpNvmxJ_IWgJmqngMPKQDNbd2lxmSMSZC8kQY";
 
 export default class NewList extends React.Component<any, any> {
   state = {
@@ -82,8 +82,10 @@ export default class NewList extends React.Component<any, any> {
         }}
       >
         <h3 className="statusHeading">Status of your vacation requests</h3>
+
         {this.state.realData ? (
           <List
+            style={{ width: "50%", float: "right" }}
             itemLayout="horizontal"
             dataSource={this.state.realData}
             renderItem={(item: any) => (
@@ -125,6 +127,10 @@ export default class NewList extends React.Component<any, any> {
             )}
           />
         ) : null}
+        <Divider style={{ height: "90vh" }} type="vertical" />
+        <div style={{ float: "left" }}>
+          <Piechart />
+        </div>
       </div>
     );
   }
