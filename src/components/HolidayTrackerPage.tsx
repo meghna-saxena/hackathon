@@ -10,12 +10,6 @@ export interface IAppProps {}
 
 export default class HolidayTrackerPage extends React.Component<IAppProps> {
   public render() {
-    return (
-      <div>
-        <Header />
-        <StatusList />
-        <SideDrawer />
-      </div>
-    );
+    return <StatusList />;
   }
 }

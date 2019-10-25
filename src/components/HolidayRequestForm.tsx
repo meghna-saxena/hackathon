@@ -9,12 +9,6 @@ export interface IAppProps {}
 
 export default class HolidayRequestForm extends React.Component<IAppProps> {
   public render() {
-    return (
-      <div>
-        <Header />
-        <FormContent />
-        <SideDrawer />
-      </div>
-    );
+    return <FormContent />;
   }
 }

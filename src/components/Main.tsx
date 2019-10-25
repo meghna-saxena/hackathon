@@ -13,12 +13,10 @@ class Main extends React.Component<any, {}> {
     this.setState({ loading: false });
   }
 
-  renderImg = () => {
-    // href = "/request-holiday";
-    // target = "_blank";
-
+  renderTimeOutApp = () => {
     this.props.history.push("/request-holiday");
   };
+
   render() {
     let myLink: any = "";
     if (!this.state.loading) {
@@ -47,8 +45,8 @@ class Main extends React.Component<any, {}> {
       <div>
         <img
           src={img}
-          onClick={this.renderImg}
-          style={{ cursor: 'pointer', width: "100%" }}
+          onClick={this.renderTimeOutApp}
+          style={{ cursor: "pointer", width: "100%" }}
         ></img>
         {/* <a
           href="/request-holiday"
