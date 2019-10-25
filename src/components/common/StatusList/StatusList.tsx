@@ -19,7 +19,7 @@ const statusEnum = {
 };
 
 const MEGGIE_TOKEN =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmVzQXQiOjE1NzIwMTkwNDksImFjY2Vzc190b2tlbiI6InlhMjkuSWwtcEJ6ZkIyUUlnZ3VsZzdLbnd4NGE4dzZOVloyaXM1dmVPa1pIak5CWUlHMFVZVXpuNldZM3MzX1l2dmpsOEpyRjhsX093ZVRsMC1KMHZkRnlYcXp0cldDbEFlWnNWU0l3dVByWUN1WlFSSXloZnlpS1F2bnA4SENFRENLajRhQSIsInJlZnJlc2hfdG9rZW4iOiIxLy8wOTZFaVFtNG1wYjRDQ2dZSUFSQUFHQWtTTndGLUw5SXJQdGdreGU0VGNEenN0Sk5STmV3WEt1X3VNemhEc0VpZ29fNHJHa0NtdnVzbUFSYjFsbDVNWndaWFM0UGZZNG5ncjRzIiwidXNlcm5hbWUiOiJtZWdobmEuc3JpdmFzdGF2YUBhdXRvMS5jb20iLCJyb2xlcyI6W119.6EbmKhNm-zyrT88oRibzRV67uqXebAd3RAp5aMOEOiY";
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmVzQXQiOjE1NzIwMjUyNTYsImFjY2Vzc190b2tlbiI6InlhMjkuSWwtcEI4MHNkS2EyeFlPMi1ZekJ1UXNjclIyNE5yY0xyV1NOWEI1OVFpMDM4QjFpTnJ5TlZjNEZrZTRUajZfc25XSENhTXJtay1sb3FJRGpMazQ3N1ZPb0lobmVHTW4tT05YMi1WRmNveDBxT2hPZ05ORi1wd3hnZERnT2hXODg1QSIsInJlZnJlc2hfdG9rZW4iOiIxLy8wOXY0MThEdWw4WUtyQ2dZSUFSQUFHQWtTTndGLUw5SXJ3WmgyUXU4WFBDT2U3X0ZrRWVaQWRBbl9yaHNoc1hEV3p5eTB4M2x1SzdxWXRfNVZrTkgxR2JScEVkWWx3QVVfcFhBIiwidXNlcm5hbWUiOiJtZWdobmEuc3JpdmFzdGF2YUBhdXRvMS5jb20iLCJyb2xlcyI6W119.1S1NcFzIOggGY4QKGFNj4sAuGaJ97qeNV8_MaYyWHt4";
 
 export default class NewList extends React.Component<any, any> {
   state = {
@@ -53,6 +53,16 @@ export default class NewList extends React.Component<any, any> {
     console.log("makeDecision");
   };
 
+  getColor = status => {
+    const colorBadge = {
+      pending: "#4a4948",
+      approved: "green",
+      declined: "red"
+    };
+
+    return colorBadge[status];
+  };
+
   render() {
     return (
       <div
@@ -72,8 +82,8 @@ export default class NewList extends React.Component<any, any> {
                 actions={[
                   <span
                     style={{
-                      background: "#edd38a",
-                      color: "#4a4948",
+                      background: "green" || this.getColor(statusEnum[item.status]),
+                      color: "#edd38a",
                       padding: "5px 15px",
                       borderRadius: "20px"
                     }}
