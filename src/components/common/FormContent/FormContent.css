@@ -12,7 +12,7 @@
     cursor: pointer;
     /* padding: 20px 20px; */
     padding: 5px 0;
-    border-radius: 20px;
+    /* border-radius: 20px; */
     width: 150px;
 }
 
@@ -30,7 +30,7 @@
     cursor: pointer;
     /* padding: 20px 20px; */
     padding: 5px 0;
-    border-radius: 20px;
+    /* border-radius: 20px; */
     width: 150px;
 }
 
@@ -45,4 +45,10 @@
 .action-btn-cancel:hover {
     background-color: rgb(228, 224, 222);
     color: rgb(43, 41, 41);
+}
+
+.content {
+    margin-top: 50px;
+    width: 75%;
+    float: right;
 }

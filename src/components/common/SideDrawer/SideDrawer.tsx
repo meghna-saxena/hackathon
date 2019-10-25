@@ -1,18 +1,33 @@
 import * as React from "react";
 import { Menu, Icon } from "antd";
+import List from "../List/List";
 
 const { SubMenu } = Menu;
 
-export default class Sider extends React.Component {
+export default class Sider extends React.Component<{}, {}> {
+  state = {
+    list: false
+  };
+
   handleClick = e => {
     console.log("click ", e);
   };
 
+  renderList = () => {
+    this.setState({ list: true });
+  };
+
   render() {
+    let testList: any = null;
+
+    if (this.state.list) {
+      testList = <List />;
+    }
+
     return (
       <Menu
         onClick={this.handleClick}
-        style={{ width: 256 }}
+        style={{ height: "100vh", width: "20%" }}
         defaultSelectedKeys={["1"]}
         defaultOpenKeys={["sub1"]}
         mode="inline"
@@ -28,7 +43,9 @@ export default class Sider extends React.Component {
         >
           <Menu.ItemGroup key="g1">
             <Menu.Item key="1">Holiday Request</Menu.Item>
-            <Menu.Item key="2">Holiday Balance</Menu.Item>
+            <Menu.Item key="2" onClick={this.renderList}>
+              Holiday Balance
+            </Menu.Item>
           </Menu.ItemGroup>
           {/* <Menu.ItemGroup key="g2" title="Item 2">
             <Menu.Item key="3">Option 3</Menu.Item>
@@ -65,6 +82,7 @@ export default class Sider extends React.Component {
           <Menu.Item key="11">Option 11</Menu.Item>
           <Menu.Item key="12">Option 12</Menu.Item>
         </SubMenu> */}
+        {/* {testList} */}
       </Menu>
     );
   }
