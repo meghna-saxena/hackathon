@@ -3,7 +3,7 @@ import { DatePicker } from "antd";
 import moment from "moment";
 
 const { RangePicker } = DatePicker;
-const dateFormat = "DD/MM/YYYY";
+const dateFormat = "YYYY-MM-DD";
 
 interface IProps {
   handleValue: (string) => void;

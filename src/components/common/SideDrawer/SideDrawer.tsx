@@ -1,10 +1,12 @@
 import * as React from "react";
 import { Menu, Icon } from "antd";
 import List from "../List/List";
+import { Redirect } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 const { SubMenu } = Menu;
 
-export default class Sider extends React.Component<{}, {}> {
+class Sider extends React.Component<any, any> {
   state = {
     list: false
   };
@@ -14,15 +16,18 @@ export default class Sider extends React.Component<{}, {}> {
   };
 
   renderList = () => {
-    this.setState({ list: true });
+    // this.setState({ list: true });
+    //<Redirect to="/holiday-balance" />;
+    this.props.history.push("/holiday-balance");
   };
 
   render() {
-    let testList: any = null;
+    // let testList: any = null;
 
-    if (this.state.list) {
-      testList = <List />;
-    }
+    // if (this.state.list) {
+    //   // testList = <List />;
+    //   <Redirect to='/holiday-balance' />
+    // }
 
     return (
       <Menu
@@ -87,3 +92,5 @@ export default class Sider extends React.Component<{}, {}> {
     );
   }
 }
+
+export default withRouter(Sider);
