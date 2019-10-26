@@ -1,15 +1,15 @@
 import * as React from "react";
-import DatePicker from "../DatePicker/DatePicker";
 import { Button, Menu, Dropdown, notification } from "antd";
-// import { Input, Tooltip, Icon } from "antd";
-import "./FormContent.css";
+
+import { DatePicker } from "../../common";
+import "./VacationFormContent.css";
 
 import axios from "axios";
 
 const MEGGIE_TOKEN =
-"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmVzQXQiOjE1NzIwNDI4MjcsImFjY2Vzc190b2tlbiI6InlhMjkuSWwtcEIzejBjSFNocDA3S2lxV1ZzNVJYZmowbUxCNnBNMEwyLWNuVDZNWlZGQl8xRTJWS2JUdDhLVk12WGtxWmtMRWhUdUkxQXJTZzJiNmVBVVhFanhPVHQ0aHhfUTVJc1hDUkJWc1k0d0JTNFlLQkRPdTNKTzVKeG5ZXzdDVXZpZyIsInJlZnJlc2hfdG9rZW4iOiIxLy8wOVRFaDlPdUpOWVoxQ2dZSUFSQUFHQWtTTndGLUw5SXI4X2xpZC00X19tZjUzOEJyZFMycWtXOWwyanFpbml5OS1IdnlSMFNhWlNyY1RkMlJUb3Jkek92VS1EZ3Y1VGVvTW9NIiwidXNlcm5hbWUiOiJtZWdobmEuc3JpdmFzdGF2YUBhdXRvMS5jb20iLCJyb2xlcyI6W119.-V4vabqpNvmxJ_IWgJmqngMPKQDNbd2lxmSMSZC8kQY";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmVzQXQiOjE1NzIwNzAyMTcsImFjY2Vzc190b2tlbiI6InlhMjkuSWwtcEJ3SFZYMjJBOGJYajNObnFCSHpPWjZnWHoyXzhOSTJtZHRpOWRfak9HTU84TEZTaGVKb1hKLWpGU2VsNzN5aEVQRUNRQjNuQXNoUm5oYW8yRmZ4dmVfeHh4X2hMRjlVRFM4R3RTaDRsQ2FGa2N3cXd4czRDdXRyaWtaTENwQSIsInJlZnJlc2hfdG9rZW4iOiIxLy8wOUF5Zk9LU2J4VFN0Q2dZSUFSQUFHQWtTTndGLUw5SXJMMC1FQkM3ekVtcFZodUtjWDFqZ3hLRzhueTlPa1dJZkdfVnFpNVJaWnh1MW1IYmJyYnlJckxKOTVMMWM0WkNGXy1BIiwidXNlcm5hbWUiOiJtZWdobmEuc3JpdmFzdGF2YUBhdXRvMS5jb20iLCJyb2xlcyI6W119.GLlXUXD5vvpKNUFjzhL1oySqFCsq7i81tmxd_ew28vY";
 
-class FormContent extends React.Component<any, any> {
+class VacationFormContent extends React.Component<any, any> {
   state = {
     dateFrom: null,
     dateTo: null,
@@ -106,4 +106,4 @@ class FormContent extends React.Component<any, any> {
   }
 }
 
-export default FormContent;
+export default VacationFormContent;

@@ -12,7 +12,7 @@ const Header = () => {
           className="company-logo"
           alt="logo"
         />
-      </Link>   
+      </Link>
       {/* <span
         style={{
           color: "orange",

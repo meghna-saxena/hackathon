@@ -1,6 +1,7 @@
 import { List, Avatar, Skeleton } from "antd";
 import * as React from "react";
-import "./NewList.css";
+
+import "./EmployeeRequestsList.css";
 
 const data = [
   {
@@ -14,7 +15,7 @@ const data = [
   }
 ];
 
-export default class NewList extends React.Component {
+export default class EmployeeRequestsList extends React.Component {
   handleApproveRequest = (item: any) => {
     console.log("handleApproveRequest", item);
   };
@@ -37,11 +38,16 @@ export default class NewList extends React.Component {
               actions={[
                 <a
                   key="list-loadmore-edit"
-                  onClick={item => this.handleApproveRequest(item)}
+                  onClick={() => this.handleApproveRequest(item)}
                 >
                   Approve
                 </a>,
-                <a key="list-loadmore-more">Reject</a>
+                <a
+                  key="list-loadmore-more"
+                  onClick={() => this.handleApproveRequest(item)}
+                >
+                  Reject
+                </a>
               ]}
             >
               <List.Item.Meta

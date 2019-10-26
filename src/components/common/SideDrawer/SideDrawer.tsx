@@ -12,15 +12,15 @@ class Sider extends React.Component<any, any> {
   };
 
   renderList = () => {
-    this.props.history.push("/pending-request");
+    this.props.history.push("/myemployee/vacation-request");
   };
 
   renderRequestPage = () => {
-    this.props.history.push("/request-holiday");
+    this.props.history.push("/vacation-request");
   };
 
   renderHolidayTrackerPage = () => {
-    this.props.history.push("/holiday-tracker");
+    this.props.history.push("/vacation-status");
   };
 
   render() {

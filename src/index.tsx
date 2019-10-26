@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from "redux";
 import reduxThunk from "redux-thunk";
 import { BrowserRouter } from "react-router-dom";
 import { composeWithDevTools } from "redux-devtools-extension";
-import App from "./App";
+import TimeOutApp from "./components/TimeOutApp";
 import reducers from "../src/reducers";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
@@ -17,12 +17,12 @@ import * as serviceWorker from "./serviceWorker";
 // );
 
 ReactDOM.render(
-//   <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-//   </Provider>,
-  ,document.getElementById("root")
+  //   <Provider store={store}>
+  <BrowserRouter>
+    <TimeOutApp />
+  </BrowserRouter>,
+  //   </Provider>,
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change
