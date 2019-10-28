@@ -15,9 +15,24 @@ const data = [
   }
 ];
 
-export default class EmployeeRequestsList extends React.Component {
+export default class EmployeeRequestsList extends React.Component<any, any> {
+  state = {
+    approved: null,
+    declined: null
+  };
+
   handleApproveRequest = (item: any) => {
+    // item.employeeid
+
+    //POST
+    // https://api-gate.qa.eagle.auto1.team/v1/people-directory/profile/me/holiday/my-employees/${employeeId}/decission
     console.log("handleApproveRequest", item);
+    this.setState({ approved: "Approved" });
+  };
+
+  handleDeclineRequest = (item: any) => {
+    console.log("handleDeclineRequest", item);
+    this.setState({ approved: "Declined" });
   };
 
   render() {
@@ -44,9 +59,9 @@ export default class EmployeeRequestsList extends React.Component {
                 </a>,
                 <a
                   key="list-loadmore-more"
-                  onClick={() => this.handleApproveRequest(item)}
+                  onClick={() => this.handleDeclineRequest(item)}
                 >
-                  Reject
+                  Decline
                 </a>
               ]}
             >
