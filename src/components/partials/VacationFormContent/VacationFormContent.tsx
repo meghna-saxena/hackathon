@@ -7,19 +7,27 @@ import "./VacationFormContent.css";
 import axios from "axios";
 
 const MEGGIE_TOKEN =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmVzQXQiOjE1NzIyMDE0MDgsImFjY2Vzc190b2tlbiI6InlhMjkuSWwtcEI2YVVLU05TX0VzZGZOX0dySXBrak1scWlRTDhWY1FwUVo4eDd6UEJ2TFR1QkliYkJzSkJWRUg5SHcycnFhbEc1VlQ0dWxIR2l3Qk1kSTltS0pKV0NRVHQ3Nmh1aUZtSEpTUjNDQktaWnhNY3l6TTR2UW1pNFZkcVRQNnpNQSIsInJlZnJlc2hfdG9rZW4iOiIxLy8wYzdjQVFILW1mSlI2Q2dZSUFSQUFHQXdTTndGLUw5SXJsUmZVNGppNnJyRDV5SmpsMmZfc0pDUkktOHVBTDBnV3MxQk10MzRsSk9BclZSeW9HMkpUMDJsVHFUeHFfLWlzcWVVIiwidXNlcm5hbWUiOiJtZWdobmEuc3JpdmFzdGF2YUBhdXRvMS5jb20iLCJyb2xlcyI6W119.dxhwg4dY63TvRtnzfZI_et_UY0V4V-Mhxn92pt7grYw";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmVzQXQiOjE1NzIyNzU3MzMsImFjY2Vzc190b2tlbiI6InlhMjkuSWwtcEJfUGd5eW9QVWxQaUpkc3RGYk1uZFk3bmJSaDNCRHk1YmRnMmlRMnotcjEtdWhMNW9yaDhCLTVQT0hZdjJPSVp1YjU0blQyQUc2cnZReGtXZUlDNmlPU1JKUnE3bEtIajU3eVAzQXNKQkdmaDd5c2FpWGI2STI2YXcyTTNRUSIsInJlZnJlc2hfdG9rZW4iOiIxLy8wOURab3l0MVg3bTVmQ2dZSUFSQUFHQWtTTndGLUw5SXJMZF81SmZPOGx0WDVjb05LLUZ3RGZrT1g5OVR1NU5Md21LcTh0bmdGSVNYU0JiMExjdDk3ZkdEdUtsbjJHbWlFT3JrIiwidXNlcm5hbWUiOiJtZWdobmEuc3JpdmFzdGF2YUBhdXRvMS5jb20iLCJyb2xlcyI6W119.QnTbS57YgfY4AHraVaITOD09GKsLvilztQQsjTyi41k";
 
 class VacationFormContent extends React.Component<any, any> {
   state = {
     dateFrom: null,
     dateTo: null,
-    reqStatus: null
+    reqStatus: null,
+    error: null
   };
 
   openNotificationWithIcon = type => {
     notification[type]({
       message: "Success",
       description: "Your vacation request has been submitted."
+    });
+  };
+
+  openNotificationWithIcon2 = type => {
+    notification[type]({
+      message: "Failed",
+      description: "Something went wrong."
     });
   };
 
@@ -53,12 +61,18 @@ class VacationFormContent extends React.Component<any, any> {
       )
       .then(res => {
         this.setState({ reqStatus: res.status, dateFrom: null, dateTo: null });
+      })
+      .catch(err => {
+        this.setState({ error: err });
       });
   };
 
   render() {
     if (this.state.reqStatus) {
       this.openNotificationWithIcon("success");
+    }
+    if (this.state.error) {
+      this.openNotificationWithIcon2("error");
     }
 
     return (
@@ -99,7 +113,7 @@ class VacationFormContent extends React.Component<any, any> {
           >
             Submit
           </Button>
-          <Button className="action-btn-cancel">Cancel</Button>
+          {/* <Button className="action-btn-cancel">Cancel</Button> */}
         </div>
       </div>
     );

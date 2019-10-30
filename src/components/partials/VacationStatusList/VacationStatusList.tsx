@@ -13,7 +13,7 @@ const STATUS_CODES = {
 };
 
 const MEGGIE_TOKEN =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmVzQXQiOjE1NzIyMDE0MDgsImFjY2Vzc190b2tlbiI6InlhMjkuSWwtcEI2YVVLU05TX0VzZGZOX0dySXBrak1scWlRTDhWY1FwUVo4eDd6UEJ2TFR1QkliYkJzSkJWRUg5SHcycnFhbEc1VlQ0dWxIR2l3Qk1kSTltS0pKV0NRVHQ3Nmh1aUZtSEpTUjNDQktaWnhNY3l6TTR2UW1pNFZkcVRQNnpNQSIsInJlZnJlc2hfdG9rZW4iOiIxLy8wYzdjQVFILW1mSlI2Q2dZSUFSQUFHQXdTTndGLUw5SXJsUmZVNGppNnJyRDV5SmpsMmZfc0pDUkktOHVBTDBnV3MxQk10MzRsSk9BclZSeW9HMkpUMDJsVHFUeHFfLWlzcWVVIiwidXNlcm5hbWUiOiJtZWdobmEuc3JpdmFzdGF2YUBhdXRvMS5jb20iLCJyb2xlcyI6W119.dxhwg4dY63TvRtnzfZI_et_UY0V4V-Mhxn92pt7grYw";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmVzQXQiOjE1NzIyNzU3MzMsImFjY2Vzc190b2tlbiI6InlhMjkuSWwtcEJfUGd5eW9QVWxQaUpkc3RGYk1uZFk3bmJSaDNCRHk1YmRnMmlRMnotcjEtdWhMNW9yaDhCLTVQT0hZdjJPSVp1YjU0blQyQUc2cnZReGtXZUlDNmlPU1JKUnE3bEtIajU3eVAzQXNKQkdmaDd5c2FpWGI2STI2YXcyTTNRUSIsInJlZnJlc2hfdG9rZW4iOiIxLy8wOURab3l0MVg3bTVmQ2dZSUFSQUFHQWtTTndGLUw5SXJMZF81SmZPOGx0WDVjb05LLUZ3RGZrT1g5OVR1NU5Md21LcTh0bmdGSVNYU0JiMExjdDk3ZkdEdUtsbjJHbWlFT3JrIiwidXNlcm5hbWUiOiJtZWdobmEuc3JpdmFzdGF2YUBhdXRvMS5jb20iLCJyb2xlcyI6W119.QnTbS57YgfY4AHraVaITOD09GKsLvilztQQsjTyi41k";
 
 export default class VacationStatusList extends React.Component<any, any> {
   state = {
@@ -67,6 +67,8 @@ export default class VacationStatusList extends React.Component<any, any> {
       return <Spin style={{ margin: "auto" }} />;
     }
 
+    const days = <span style={{ background: "gold" }}> days</span>;
+
     return (
       <div
         style={{
@@ -79,7 +81,7 @@ export default class VacationStatusList extends React.Component<any, any> {
 
         {this.state.realData ? (
           <List
-            style={{ width: "50%", float: "right" }}
+            // style={{ width: "40%", float: "right" }}
             itemLayout="horizontal"
             dataSource={this.state.realData}
             renderItem={(item: any) => (
@@ -106,8 +108,8 @@ export default class VacationStatusList extends React.Component<any, any> {
                 {/* <Skeleton avatar title={false} active> */}
                 <List.Item.Meta
                   style={{
-                    textAlign: "left",
-                    paddingLeft: "60px"
+                    textAlign: "left"
+                    // paddingLeft: "60px"
                   }}
                   avatar={
                     <Avatar src="https://pngriver.com/wp-content/uploads/2018/04/Download-Donald-Duck-PNG-Clipart.png" />
@@ -115,7 +117,9 @@ export default class VacationStatusList extends React.Component<any, any> {
                   title={`${item.firstName} ${item.lastName}`}
                   description={`Leave taken from ${moment(item.dateFrom).format(
                     "DD-MM-YYYY"
-                  )} to ${moment(item.dateTo).format("DD-MM-YYYY")}`}
+                  )} to ${moment(item.dateTo).format("DD-MM-YYYY")} — ${
+                    item.numberOfDays
+                  } days`}
                 />
                 {/* <div>content</div> */}
                 {/* </Skeleton> */}
@@ -123,10 +127,10 @@ export default class VacationStatusList extends React.Component<any, any> {
             )}
           />
         ) : null}
-        <Divider style={{ height: "90vh" }} type="vertical" />
+        {/* <Divider style={{ height: "90vh" }} type="vertical" />
         <div style={{ float: "left" }}>
           <Piechart />
-        </div>
+        </div> */}
       </div>
     );
   }

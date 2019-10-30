@@ -8,7 +8,7 @@ import {
   EmployeeeRequestsPage
 } from "./pages";
 
-import { Header, SideDrawer, Footer } from "./common";
+import { Header, SideDrawer, Footer, AnotherDrawer } from "./common";
 import "../App.css";
 
 const TimeOutApp: React.FC = () => {
@@ -31,7 +31,7 @@ const TimeOutApp: React.FC = () => {
           />
           {/* <Route component={NotFound} /> */}
         </Switch>
-        <SideDrawer />
+        <AnotherDrawer />
         <Footer />
       </div>
     </React.Fragment>

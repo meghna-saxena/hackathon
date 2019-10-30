@@ -8,7 +8,10 @@ class Donut extends Component {
     this.state = {
       options: {},
       vacations: [44, 17, 15],
-      labels: ["Pending", "Availed", "Remaining"]
+      labels: ["Pending", "Availed", "Remaining"],
+      legend: {
+        show: true,
+      }
     };
   }
 
